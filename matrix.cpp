@@ -18,4 +18,5 @@ matrix& matrix::alokuj(int req_n) {
     // Opcjonalne zerowanie
     if(allocated_n == req_n) { for(int i=0; i<n*n; ++i) data[i] = 0; }
     return *this;
+    
 }

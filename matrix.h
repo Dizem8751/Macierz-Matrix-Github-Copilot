@@ -18,4 +18,5 @@ public:
     matrix& alokuj(int n);
 };
 
+
 #endif
