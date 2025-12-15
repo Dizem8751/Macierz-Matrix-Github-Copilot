@@ -12,7 +12,10 @@ private:
     int allocated_n;             // Rozmiar fizycznie zaalokowanej pamięci
 
 public:
-
+    matrix();
+    matrix(int n);
+    ~matrix();
+    matrix& alokuj(int n);
 };
 
 #endif
