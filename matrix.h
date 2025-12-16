@@ -16,6 +16,9 @@ public:
     matrix(int n);
     ~matrix();
     matrix& alokuj(int n);
+
+    matrix(int n, int* t);
+    matrix(const matrix& m);
 };
 
 
