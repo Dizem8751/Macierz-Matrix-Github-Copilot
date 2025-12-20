@@ -33,6 +33,36 @@ public:
     matrix& dowroc();
     matrix& losuj();
     matrix& losuj(int x);
+
+    // ==Algorytmy wypełniania macierzy==
+    matrix& diagonalna(int* t);
+    matrix& diagonalna_k(int k, int* t);
+    matrix& kolumna(int x, int* t);
+    matrix& wiersz(int y, int* t);
+    matrix& przekatna();
+    matrix& pod_przekatna();
+    matrix& nad_przekatna();
+    matrix& szachownica();
+
+    // --Operatory Arytmetyczne--
+    matrix& operator+(const matrix& m);
+    matrix& operator*(const matrix& m);
+    matrix& operator+(int a);
+    matrix& operator*(int a);
+    matrix& operator-(int a);
+    
+    // --Operatory modyfikujące--
+    matrix& operator++(int);
+    matrix& operator--(int);
+    matrix& operator+=(int a);
+    matrix& operator-=(int a);
+    matrix& operator*=(int a);
+    matrix& operator()(double d);
+
+    // --Operator porównania--
+    bool operator==(const matrix& m) const;
+    bool operator>(const matrix& m) const;
+    bool operator<(const matrix& m) const;
 };
 
 

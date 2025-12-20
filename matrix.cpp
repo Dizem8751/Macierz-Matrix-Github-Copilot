@@ -50,3 +50,150 @@ matrix& matrix::dowroc() {
     }
     return *this;
 }
+
+matrix& matrix::losuj() {
+    for (int i = 0; i < n * n; ++i) {
+        data[i] = rand() % 10; // Losowe wartości od 0 do 9
+    }
+    return *this;
+}
+
+matrix& matrix::losuj(int x) {
+    for (int i=0; i<n*n; ++i) data[i] = 0;
+    for (int k=0; k<x; ++k ) {
+        int r = rand() % n;
+        int c = rand() % n;
+        data[r*n + c] = rand() % 10;
+    }
+    return *this;
+}
+
+//-- Algorytmy wypełniania macierzy --//
+matrix& matrix::diagonalna(int* t) {
+    return diagonalna_k(0, t);
+}
+
+matrix& matrix::diagonalna_k(int k, int* t) {
+    for (int i = 0; i <n * n; i++) data[i] = 0;
+
+    int idx = 0;
+    for (int i = 0; i < n; ++i) {
+        int j = i + k;
+        if (j >= 0 && j < n) {
+            data[i * n + j] = t[idx++];
+        }
+    }
+    return *this;
+}
+
+matrix& matrix::kolumna(int x, int* t) {
+    if (x >= 0 && x < n) {
+        for (int i = 0; i < n; ++i) data[i * n + x] = t[i];
+    }
+    return *this;
+}
+
+matrix& matrix::wiersz(int y, int* t) {
+    if (y >= 0 && y < n) {
+        for (int i = 0; i < n; ++i) data[y * n + i] = t[i];
+    }
+    return *this;
+}
+
+matrix& matrix::przekatna() {
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            data[i * n + j] = (i == j) ? 1 : 0;
+    return *this;
+}
+
+matrix& matrix::pod_przekatna() {
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            data[i * n + j] = (i > j) ? 1 : 0;
+    return *this;
+}
+
+matrix& matrix::nad_przekatna() {
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            data[i * n + j] = (i < j) ? 1 : 0;
+    return *this;
+}
+
+matrix& matrix::szachownica() {
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            data[i * n + j] = ((i + j) % 2 == 0) ? 1 : 0;
+    return *this;
+}
+
+// -- Operatory --
+
+matrix matrix::operator+(const matrix& m) const {
+    matrix temp(n); 
+    if (n != m.n) return temp; // Zabezpieczenie przed różnymi wymiarami
+    for (int i = 0; i < n * n; ++i) temp.data[i] = data[i] + m.data[i];
+    return temp;
+}
+
+matrix matrix::operator*(const matrix& m) const {
+    matrix temp(n);
+    if (n != m.n) return temp;
+    // Mnożenie macierzy: wiersz * kolumna
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            int sum = 0;
+            for (int k = 0; k < n; ++k) {
+                sum += data[i * n + k] * m.data[k * n + j];
+            }
+            temp.data[i * n + j] = sum;
+        }
+    }
+    return temp;
+}
+
+matrix matrix::operator+(int a) const {
+    matrix temp(*this);
+    for(int i=0; i<n*n; ++i) temp.data[i] += a;
+    return temp;
+}
+matrix matrix::operator*(int a) const {
+    matrix temp(*this);
+    for(int i=0; i<n*n; ++i) temp.data[i] *= a;
+    return temp;
+}
+matrix matrix::operator-(int a) const {
+    matrix temp(*this);
+    for(int i=0; i<n*n; ++i) temp.data[i] -= a;
+    return temp;
+}
+
+matrix& matrix::operator++(int) {
+    for(int i=0; i<n*n; ++i) data[i]++;
+    return *this;
+}
+
+matrix& matrix::operator--(int) {
+    for(int i=0; i<n*n; ++i) data[i]--;
+    return *this;
+}
+
+matrix& matrix::operator+=(int a) {
+    for(int i=0; i<n*n; ++i) data[i] += a;
+    return *this;
+}
+matrix& matrix::operator-=(int a) {
+    for(int i=0; i<n*n; ++i) data[i] -= a;
+    return *this;
+}
+matrix& matrix::operator*=(int a) {
+    for(int i=0; i<n*n; ++i) data[i] *= a;
+    return *this;
+}
+
+matrix& matrix::operator()(double d) {
+    int val = static_cast<int>(d);
+    for(int i=0; i<n*n; ++i) data[i] += val;
+    return *this;
+}
