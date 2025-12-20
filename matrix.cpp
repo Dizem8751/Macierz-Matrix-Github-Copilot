@@ -173,3 +173,27 @@ matrix& matrix::operator++(int) {
     for(int i=0; i<n*n; ++i) data[i]++;
     return *this;
 }
+
+matrix& matrix::operator--(int) {
+    for(int i=0; i<n*n; ++i) data[i]--;
+    return *this;
+}
+
+matrix& matrix::operator+=(int a) {
+    for(int i=0; i<n*n; ++i) data[i] += a;
+    return *this;
+}
+matrix& matrix::operator-=(int a) {
+    for(int i=0; i<n*n; ++i) data[i] -= a;
+    return *this;
+}
+matrix& matrix::operator*=(int a) {
+    for(int i=0; i<n*n; ++i) data[i] *= a;
+    return *this;
+}
+
+matrix& matrix::operator()(double d) {
+    int val = static_cast<int>(d);
+    for(int i=0; i<n*n; ++i) data[i] += val;
+    return *this;
+}
