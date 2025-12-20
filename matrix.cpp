@@ -235,3 +235,30 @@ bool matrix::operator>(const matrix& m) {
         if (data[i] <= m.data[i]) return false; // Wystarczy jeden element <= aby całość nie była >
     return true;
 }
+
+bool matrix::operator<(const matrix& m) {
+    if (n != m.n) return false;
+    for (int i = 0; i < n * n; ++i)
+        if (data[i] >= m.data[i]) return false;
+    return true;
+}
+
+// --- Funkcje Zaprzyjaźnione ---
+matrix operator+(int a, matrix& m) { return m + a; }
+matrix operator*(int a, matrix& m) { return m * a; }
+matrix operator-(int a, matrix& m) {
+    matrix temp(m.n);
+    for (int i = 0; i < m.n * m.n; ++i) temp.data[i] = a - m.data[i];
+    return temp;
+}
+
+std::ostream& operator<<(std::ostream& o, matrix& m) {
+    for (int i = 0; i < m.n; ++i) {
+        o << "| ";
+        for (int j = 0; j < m.n; ++j) {
+            o << std::setw(3) << m.data[i * m.n + j] << " ";
+        }
+        o << "|\n";
+    }
+    return o;
+}
