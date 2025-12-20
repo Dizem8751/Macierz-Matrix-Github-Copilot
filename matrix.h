@@ -44,7 +44,12 @@ public:
     matrix& nad_przekatna();
     matrix& szachownica();
 
-    
+    // --Operatory Arytmetyczne--
+    matrix& operator+(const matrix& m);
+    matrix& operator*(const matrix& m);
+    matrix& operator+(int a);
+    matrix& operator*(int a);
+    matrix& operator-(int a);    
 };
 
 
