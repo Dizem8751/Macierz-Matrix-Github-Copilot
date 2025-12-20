@@ -100,3 +100,32 @@ matrix& matrix::wiersz(int y, int* t) {
     return *this;
 }
 
+matrix& matrix::przekatna() {
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            data[i * n + j] = (i == j) ? 1 : 0;
+    return *this;
+}
+
+matrix& matrix::pod_przekatna() {
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            data[i * n + j] = (i > j) ? 1 : 0;
+    return *this;
+}
+
+matrix& matrix::nad_przekatna() {
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            data[i * n + j] = (i < j) ? 1 : 0;
+    return *this;
+}
+
+matrix& matrix::szachownica() {
+    for (int i = 0; i < n; ++i)
+        for (int j = 0; j < n; ++j)
+            data[i * n + j] = ((i + j) % 2 == 0) ? 1 : 0;
+    return *this;
+}
+
+
