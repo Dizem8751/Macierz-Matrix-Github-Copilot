@@ -50,3 +50,53 @@ matrix& matrix::dowroc() {
     }
     return *this;
 }
+
+matrix& matrix::losuj() {
+    for (int i = 0; i < n * n; ++i) {
+        data[i] = rand() % 10; // Losowe wartości od 0 do 9
+    }
+    return *this;
+}
+
+matrix& matrix::losuj(int x) {
+    for (int i=0; i<n*n; ++i) data[i] = 0;
+    for (int k=0; k<x; ++k ) {
+        int r = rand() % n;
+        int c = rand() % n;
+        data[r*n + c] = rand() % 10;
+    }
+    return *this;
+}
+
+//-- Algorytmy wypełniania macierzy --//
+matrix& matrix::diagonalna(int* t) {
+    return diagonalna_k(0, t);
+}
+
+matrix& matrix::diagonalna_k(int k, int* t) {
+    for (int i = 0; i <n * n; i++) data[i] = 0;
+
+    int idx = 0;
+    for (int i = 0; i < n; ++i) {
+        int j = i + k;
+        if (j >= 0 && j < n) {
+            data[i * n + j] = t[idx++];
+        }
+    }
+    return *this;
+}
+
+matrix& matrix::kolumna(int x, int* t) {
+    if (x >= 0 && x < n) {
+        for (int i = 0; i < n; ++i) data[i * n + x] = t[i];
+    }
+    return *this;
+}
+
+matrix& matrix::wiersz(int y, int* t) {
+    if (y >= 0 && y < n) {
+        for (int i = 0; i < n; ++i) data[y * n + i] = t[i];
+    }
+    return *this;
+}
+
