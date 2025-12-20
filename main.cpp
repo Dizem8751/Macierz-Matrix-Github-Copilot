@@ -20,5 +20,21 @@ int main() {
     matrix B(4);
     B.szachownica();
     std::cout << B << std::endl;
+
+     std::cout << "--- Test 4: Operatory arytmetyczne ---" << std::endl;
+    matrix C(3); C.losuj();
+    matrix D(3); D.losuj();
+    std::cout << "C:\n" << C << "D:\n" << D;
     
+    matrix E = C + D;
+    std::cout << "C + D:\n" << E << std::endl;
+    
+    matrix F = C * D;
+    std::cout << "C * D:\n" << F << std::endl;
+
+    std::cout << "--- Test 5: Operator() (double) ---" << std::endl;
+    C(5.99); // Powinno dodac 5
+    std::cout << "C + 5:\n" << C << std::endl;
+
+    return 0;
 }
