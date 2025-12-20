@@ -49,7 +49,20 @@ public:
     matrix& operator*(const matrix& m);
     matrix& operator+(int a);
     matrix& operator*(int a);
-    matrix& operator-(int a);    
+    matrix& operator-(int a);
+    
+    // --Operatory modyfikujące--
+    matrix& operator++(int);
+    matrix& operator--(int);
+    matrix& operator+=(int a);
+    matrix& operator-=(int a);
+    matrix& operator*=(int a);
+    matrix& operator()(double d);
+
+    // --Operator porównania--
+    bool operator==(const matrix& m) const;
+    bool operator>(const matrix& m) const;
+    bool operator<(const matrix& m) const;
 };
 
 
