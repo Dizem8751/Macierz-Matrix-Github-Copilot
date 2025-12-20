@@ -128,4 +128,48 @@ matrix& matrix::szachownica() {
     return *this;
 }
 
+// -- Operatory --
 
+matrix matrix::operator+(const matrix& m) const {
+    matrix temp(n); 
+    if (n != m.n) return temp; // Zabezpieczenie przed różnymi wymiarami
+    for (int i = 0; i < n * n; ++i) temp.data[i] = data[i] + m.data[i];
+    return temp;
+}
+
+matrix matrix::operator*(const matrix& m) const {
+    matrix temp(n);
+    if (n != m.n) return temp;
+    // Mnożenie macierzy: wiersz * kolumna
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            int sum = 0;
+            for (int k = 0; k < n; ++k) {
+                sum += data[i * n + k] * m.data[k * n + j];
+            }
+            temp.data[i * n + j] = sum;
+        }
+    }
+    return temp;
+}
+
+matrix matrix::operator+(int a) const {
+    matrix temp(*this);
+    for(int i=0; i<n*n; ++i) temp.data[i] += a;
+    return temp;
+}
+matrix matrix::operator*(int a) const {
+    matrix temp(*this);
+    for(int i=0; i<n*n; ++i) temp.data[i] *= a;
+    return temp;
+}
+matrix matrix::operator-(int a) const {
+    matrix temp(*this);
+    for(int i=0; i<n*n; ++i) temp.data[i] -= a;
+    return temp;
+}
+
+matrix& matrix::operator++(int) {
+    for(int i=0; i<n*n; ++i) data[i]++;
+    return *this;
+}
