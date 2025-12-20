@@ -12,13 +12,27 @@ private:
     int allocated_n;             // Rozmiar fizycznie zaalokowanej pamięci
 
 public:
+    //--Konstruktory i destruktor--
     matrix();
     matrix(int n);
+    matrix(int n, int* t);
+    matrix(const matrix& m);
     ~matrix();
     matrix& alokuj(int n);
 
     matrix(int n, int* t);
     matrix(const matrix& m);
+    ~matrix();
+
+    // --Zarządzanie pamięcią--
+    matrix& alokuj(int n);
+
+    // --Operatory--
+    matrix& wstaw(int x, int y, int wartosc);
+    int pokaz(int x, int y) const;
+    matrix& dowroc();
+    matrix& losuj();
+    matrix& losuj(int x);
 };
 
 #endif
