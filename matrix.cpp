@@ -30,3 +30,23 @@ matrix::matrix(const matrix& m) : n(m.n), allocated_n(m.allocated_n) {
         for (int i = 0; i < n * n; ++i) data[i] = m.data[i];
     }
 }
+
+matrix& matrix::wstaw(int x, int y, int wartosc) {
+    if (x < 0 || x >= n || y < 0 || y >= n) return *this;
+    data[y * n + x] = wartosc;
+    return *this;
+}
+
+int matrix::pokaz(int x, int y) const {
+    if (x < 0 || x >= n || y < 0 || y >= n) return 0;
+    return data[y * n + x];
+}
+
+matrix& matrix::dowroc() {
+    for (int i = 0; i < n; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            std::swap(data[i * n + j], data[j * n + i]);
+        }
+    }
+    return *this;
+}
