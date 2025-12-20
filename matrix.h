@@ -33,6 +33,18 @@ public:
     matrix& dowroc();
     matrix& losuj();
     matrix& losuj(int x);
+
+    // ==Algorytmy wypełniania macierzy==
+    matrix& diagonalna(int* t);
+    matrix& diagonalna_k(int k, int* t);
+    matrix& kolumna(int x, int* t);
+    matrix& wiersz(int y, int* t);
+    matrix& przekatna();
+    matrix& pod_przekatna();
+    matrix& nad_przekatna();
+    matrix& szachownica();
+
+    
 };
 
 
