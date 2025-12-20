@@ -63,6 +63,12 @@ public:
     bool operator==(const matrix& m) const;
     bool operator>(const matrix& m) const;
     bool operator<(const matrix& m) const;
+
+    // --- Funkcje Zaprzyjaźnione ---
+    friend matrix operator+(int a, matrix& m);
+    friend matrix operator*(int a, matrix& m);
+    friend matrix operator-(int a, matrix& m);
+    friend std::ostream& operator<<(std::ostream& o, matrix& m);
 };
 
 
