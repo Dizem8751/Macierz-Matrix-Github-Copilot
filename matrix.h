@@ -35,4 +35,5 @@ public:
     matrix& losuj(int x);
 };
 
+
 #endif
