@@ -36,5 +36,23 @@ int main() {
     C(5.99); // Powinno dodac 5
     std::cout << "C + 5:\n" << C << std::endl;
 
+     std::cout << "--- Test 6: Duza macierz (n=30) i realokacja ---" << std::endl;
+    matrix G(2);
+    G.alokuj(30); // Realokacja z 2 na 30
+    G.losuj();
+    // Nie wypisujemy, ale sprawdzamy czy program sie nie wysypie
+    G.dowroc();
+    std::cout << "Operacja odwrocenia na 30x30 zakonczona." << std::endl;
+
+    // Test operatorów porównania
+    matrix H(2), I(2);
+    int tH[] = {1, 2, 3, 4};
+    int tI[] = {1, 2, 3, 4};
+    matrix tempH(2, tH);
+    matrix tempI(2, tI);
+    
+    if (tempH == tempI) std::cout << "Macierze sa rowne.\n";
+    else std::cout << "Macierze sa rozne.\n";
+
     return 0;
 }
