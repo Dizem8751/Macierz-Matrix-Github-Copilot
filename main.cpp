@@ -1,8 +1,34 @@
+/**
+ * @file main.cpp
+ * @brief Program testujący klasę matrix.
+ * 
+ * Ten program demonstruje różne operacje na macierzach kwadratowych:
+ * - inicjalizacja i alokacja pamięci,
+ * - algorytmy wypełniania (diagonalna, szachownica),
+ * - operacje arytmetyczne (dodawanie, mnożenie),
+ * - operatory porównania i modyfikujące.
+ */
+
 #include "matrix.h"
 #include <iostream>
 
 using namespace std;
 
+/**
+ * @brief Funkcja główna programu.
+ * 
+ * Wykonuje serię testów weryfikujących poprawność działania klasy matrix,
+ * obejmujących:
+ * - Test 1: Alokacja macierzy i losowanie wartości
+ * - Test 2: Wypełnianie diagonali przesuniętej
+ * - Test 3: Tworzenie wzoru szachownicy
+ * - Test 4: Operacje arytmetyczne (dodawanie i mnożenie macierzy)
+ * - Test 5: Użycie operatora() do dodania liczby zmiennoprzecinkowej
+ * - Test 6: Realokacja i transponowanie dużej macierzy
+ * - Test 7: Operatory porównania
+ * 
+ * @return int Kod powrotu (0 w przypadku pomyślnego wykonania).
+ */
 int main() {
      srand(time(NULL));
 
